@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 /**
  * Created by tune on 21/03/16.
  */
-public class SampleSlide extends Fragment {
+public class SimpleSlide extends Fragment {
 
     private static final String ARG_LAYOUT_RES_ID = "layoutResId";
 
-    public static SampleSlide newInstance(int layoutResId) {
-        SampleSlide sampleSlide = new SampleSlide();
+    public static SimpleSlide newInstance(int layoutResId) {
+        SimpleSlide sampleSlide = new SimpleSlide();
 
         Bundle args = new Bundle();
         args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
@@ -26,7 +26,7 @@ public class SampleSlide extends Fragment {
 
     private int layoutResId;
 
-    public SampleSlide() {}
+    public SimpleSlide() {}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

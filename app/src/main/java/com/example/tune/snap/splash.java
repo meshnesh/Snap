@@ -36,7 +36,7 @@ public class splash extends Activity {
             public void onAnimationEnd(Animation animation) {
                 iv.startAnimation(an2);
                 finish();
-                Intent i = new Intent(getBaseContext(), snap.class);
+                Intent i = new Intent(getBaseContext(), intro.class);
                 startActivity(i);
 
             }

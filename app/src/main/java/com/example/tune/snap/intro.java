@@ -1,62 +1,83 @@
 package com.example.tune.snap;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
-import static com.example.tune.snap.SampleSlide.newInstance;
 
-/**
- * Created by tune on 21/03/16.
- */
 public class intro extends AppIntro {
+    // Please DO NOT override onCreate. Use init.
     @Override
     public void init(Bundle savedInstanceState) {
 
         // Add your slide's fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(newInstance(R.layout.first_fragment));
-        addSlide(newInstance(R.layout.second_fragment));
-        addSlide(newInstance(R.layout.third_fragment));
+        addSlide(SimpleSlide.newInstance(R.layout.slide_1));
+        addSlide(SimpleSlide.newInstance(R.layout.slide_2));
+        addSlide(SimpleSlide.newInstance(R.layout.slide_3));
 
-        // SHOW or HIDE the statusbar
+        // Instead of fragments, you can also use our default slide
+        // Just set a title, description, background and image. AppIntro will do the rest.
+//        addSlide(AppIntroFragment.newInstance(R.string.app_name, R.string.description,
+//                R.drawable.pb1, R.color.Purple));
+
         showStatusBar(true);
-        // Hide Skip/Done button
+
+        // OPTIONAL METHODS
+        // Override bar/separator color.
+//        setBarColor(Color.parseColor("#3F51B5"));
+        setSeparatorColor(Color.parseColor("#000000"));
+
+        // Hide Skip/Done button.
         showSkipButton(true);
-        showDoneButton(true);
+//        setProgressButtonEnabled(true);
 
 
-        // Animations -- use only one of the below. Using both could cause errors.
-        setFadeAnimation();
+        // Turn vibration on and set intensity.
+        // NOTE: you will probably need to ask VIBRATE permission in Manifest.
+//        setVibrate(true);
+//        setVibrateIntensity(30);
+    }
+    public void Skip(){
+        startActivity(new Intent(getBaseContext(), snap.class));
+        onStop();
     }
 
-    private void loadMainActivity(){
-        Intent intent = new Intent(this, snap.class);
-        startActivity(intent);
-    }
     @Override
     public void onSkipPressed() {
         // Do something when users tap on Skip button.
-        loadMainActivity();
-        Toast.makeText(getApplicationContext(), getString(R.string.skip), Toast.LENGTH_SHORT).show();
-    }
+        Skip();
 
-    @Override
-    public void onNextPressed() {
-        // Do something when users tap on Next button.
     }
 
     @Override
     public void onDonePressed() {
         // Do something when users tap on Done button.
-        loadMainActivity();
-
+        Skip();
     }
 
     @Override
     public void onSlideChanged() {
-        // Do something when slide is changed
+        // Do something when the slide changes.
+    }
+
+    @Override
+    public void onNextPressed() {
+        // Do something when users tap on Next button.
+
+    }
+    public void clickme(View view){
+        Intent intent = new Intent(this, snap.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
     }
 }
