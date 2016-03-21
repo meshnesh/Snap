@@ -1,32 +1,31 @@
 package com.example.tune.snap;
 
-import android.app.Fragment;
+/**
+ * Created by tune on 14/03/16.
+ */
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by tune on 21/03/16.
- */
+
 public class SimpleSlide extends Fragment {
+    private static  final String ARG_LAYOUT_RES_ID = "layoutResId";
 
-    private static final String ARG_LAYOUT_RES_ID = "layoutResId";
-
-    public static SimpleSlide newInstance(int layoutResId) {
-        SimpleSlide sampleSlide = new SimpleSlide();
+    public static SimpleSlide newInstance(int layoutResId){
+        SimpleSlide simpleSlide = new SimpleSlide();
 
         Bundle args = new Bundle();
         args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
-        sampleSlide.setArguments(args);
+        simpleSlide.setArguments(args);
 
-        return sampleSlide;
+        return simpleSlide;
     }
-
     private int layoutResId;
 
-    public SimpleSlide() {}
+    public SimpleSlide(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,3 +41,4 @@ public class SimpleSlide extends Fragment {
         return inflater.inflate(layoutResId, container, false);
     }
 }
+

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
@@ -42,6 +41,9 @@ public class intro extends AppIntro {
 //        setVibrate(true);
 //        setVibrateIntensity(30);
     }
+
+
+
     public void Skip(){
         startActivity(new Intent(getBaseContext(), snap.class));
         onStop();
